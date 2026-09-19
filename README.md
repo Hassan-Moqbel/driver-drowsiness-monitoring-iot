@@ -21,34 +21,34 @@ Driver fatigue is a leading cause of severe traffic accidents worldwide. This pr
 
 ## System Architecture
 
-```mermaid
+mermaid
 flowchart TD
     subgraph Vision Node (PC/Raspberry Pi)
-        CAM[USB Webcam] -->|Video Stream| CV[OpenCV + Mediapipe]
-        CV -->|Facial Landmarks| EAR[EAR Calculation Logic]
-        EAR -->|State Evaluator| PUB[MQTT Publisher]
+        CAM["USB Webcam"] -->|Video Stream| CV["OpenCV + Mediapipe"]
+        CV -->|Facial Landmarks| EAR["EAR Calculation Logic"]
+        EAR -->|State Evaluator| PUB["MQTT Publisher"]
     end
 
     subgraph Network
-        PUB <-->|Wi-Fi / TCP| BROKER[MQTT Broker 192.168.0.160]
+        PUB <-->|Wi-Fi / TCP| BROKER["MQTT Broker 192.168.0.160"]
     end
 
     subgraph Actuation Node (ESP32)
-        BROKER <-->|Wi-Fi / TCP| SUB[MQTT Subscriber]
-        SUB -->|GPIO High/Low| RELAY[Motor Relay Contactor]
-        SUB -->|PWM| BUZZER[Acoustic Alarm]
+        BROKER <-->|Wi-Fi / TCP| SUB["MQTT Subscriber"]
+        SUB -->|GPIO High/Low| RELAY["Motor Relay Contactor"]
+        SUB -->|PWM| BUZZER["Acoustic Alarm"]
     end
-```
+
 
 ## Theoretical & Mathematical Models
 
 ### Eye Aspect Ratio (EAR)
 The EAR formula maps 2D facial landmarks corresponding to the ocular boundaries to calculate the degree of eye closure. Let $p_1, \dots, p_6$ denote the Cartesian coordinates of the 6 key eye landmarks. The ratio is defined as:
-$$ \text{EAR} = \frac{||p_2 - p_6|| + ||p_3 - p_5||}{2 ||p_1 - p_4||} $$
+$$ \text{"EAR"} = \frac{"||p_2 - p_6|| + ||p_3 - p_5||"}{2 ||p_1 - p_4||} $$
 Where:
 - The numerator computes the distance between the vertical eye landmarks.
 - The denominator computes the distance between the horizontal eye landmarks.
-- A sudden drop in EAR indicates a blink, while a sustained drop (e.g., $EAR < 0.25$ for $t > 3\text{s}$) confirms severe drowsiness.
+- A sudden drop in EAR indicates a blink, while a sustained drop (e.g., $EAR < 0.25$ for $t > 3\text{"s"}$) confirms severe drowsiness.
 
 ## Hardware Bill of Materials (BOM)
 | Component | Specification | Quantity |
@@ -111,4 +111,4 @@ Mechatronics Engineer | Mechanical Design & CAD (SolidWorks & AutoCAD) | Prevent
 [GitHub](https://github.com/Hassan-Moqbel) · [Facebook](https://www.facebook.com/share/1BqxAgVjHi/) · [LinkedIn](https://www.linkedin.com/in/hassan-moqbel)
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the ["MIT License"](LICENSE).
