@@ -48,7 +48,7 @@ $$ \text{EAR} = \frac{||p_2 - p_6|| + ||p_3 - p_5||}{2 ||p_1 - p_4||} $$
 Where:
 - The numerator computes the distance between the vertical eye landmarks.
 - The denominator computes the distance between the horizontal eye landmarks.
-- A sudden drop in EAR indicates a blink, while a sustained drop (e.g., $EAR < 0.25$ for $t > 3\text{s}$) confirms severe drowsiness.
+- A sudden drop in EAR indicates a blink, while a sustained drop (e.g., $EAR < 0.25$for$t > 3\text{s}$) confirms severe drowsiness.
 
 ## Hardware Bill of Materials (BOM)
 | Component | Specification | Quantity |
