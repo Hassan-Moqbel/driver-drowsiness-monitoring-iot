@@ -205,6 +205,12 @@ python pc_ai/driver_monitor.py
 
 ---
 
+---
+
+**Hassan Moqbel Morshed Ghaleb**  
+Mechatronics Engineer | Mechanical Design & CAD (SolidWorks & AutoCAD) | Preventive Maintenance & Electromechanical Systems | Industrial Automation, Control Systems, Robotics & Intelligent Machines | CAD/FEA, Embedded Systems, Python & C++  
+[GitHub](https://github.com/Hassan-Moqbel) · [Facebook](https://www.facebook.com/share/1BqxAgVjHi/) · [LinkedIn](https://www.linkedin.com/in/hassan-moqbel)
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
