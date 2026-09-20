@@ -135,6 +135,23 @@ stateDiagram-v2
 
 *Note: The relay module operates in active-low or active-high depending on the jumper. The MicroPython script configures GPIO 23 accordingly to ensure a fail-safe Normally Closed (NC) default state for the vehicle ignition.*
 
+```text
+AUTOMOTIVE ISOLATION SCHEMATIC CONCEPT
+                 
+   ESP32 MCU                  OPTOCOUPLER MODULE              VEHICLE 12V HARNESS
+  +----------+               +------------------+            +-------------------+
+  |          |               |   +----+         |            |                   |
+  |  GPIO 23 |-----[ 330R ]----->|LED |   Photo |   +5V ---->| Relay Coil (+)    |
+  |          |               |   |    |Transistor            |                   |
+  |      GND |---------------+-->|GND |----+        |   GND ----| Transistor Collector
+  +----------+               +------------------+            |   1N4007 Diode    |
+                                      |                      +-------------------+
+                                     GND                               |
+                                                                       V
+                                                               [ IGNITION LOOP ]
+```
+
+
 ---
 
 ## Step-by-Step Setup & Configuration
