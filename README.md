@@ -94,6 +94,21 @@ $$
 
 *(where $N = 15\text{ frames}$ based on the target vision pipeline framerate).*
 
+```mermaid
+stateDiagram-v2
+    [*] --> STATE_NORMAL : Power On & Network Associated
+
+    STATE_NORMAL --> STATE_WARNING : EAR < 0.25 for 15 frames
+    STATE_NORMAL --> STATE_NORMAL : EAR >= 0.25 (Reset Counter)
+
+    STATE_WARNING --> STATE_NORMAL : Driver Resumes Attention
+    STATE_WARNING --> STATE_EMERGENCY_INTERLOCK : Drowsiness Persists (> 3000 ms)
+
+    STATE_EMERGENCY_INTERLOCK --> STATE_LATCHED_SAFETY : Engine Cutoff Triggered
+    STATE_LATCHED_SAFETY --> STATE_NORMAL : Manual Master Reset Engaged
+```
+
+
 ---
 
 ## Hardware Bill of Materials (BOM)
