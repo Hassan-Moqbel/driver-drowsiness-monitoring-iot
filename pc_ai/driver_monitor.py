@@ -3,14 +3,14 @@ import mediapipe as mp
 import paho.mqtt.client as mqtt
 
 # ===== إعدادات MQTT =====
-broker = "192.168.0.160"
+MQTT_BROKER = "192.168.0.160"  # Set to your local network Mosquitto IP
 port = 1883
-topic_status = "car/driver/status"
+MQTT_TOPIC = "car/driver/status"
 topic_notification = "car/notification"
 topic_motor = "lab6/motor"
 
 client = mqtt.Client()
-client.connect(broker, port, 60)
+client.connect(MQTT_BROKER, port, 60)
 
 # ===== Mediapipe =====
 mp_face_mesh = mp.solutions.face_mesh
@@ -87,7 +87,7 @@ while True:
                 if (current_time - potential_sleep_start) >= SLEEP_CONFIRM_SECONDS:
                     driver_sleeping = True
                     sleep_start_time = current_time
-                    client.publish(topic_status, "sleeping")
+                    client.publish(MQTT_TOPIC, "sleeping")
                     client.publish(topic_notification, "press_switch")
                     last_notification_time = current_time
                     print("Driver is sleeping! (confirmed after 3s)")
@@ -98,7 +98,7 @@ while True:
         if driver_sleeping:
             driver_sleeping = False
             sleep_start_time = None
-            client.publish(topic_status, "awake")
+            client.publish(MQTT_TOPIC, "awake")
             print("Driver is awake!")
 
     # إذا كان نائم (مؤكد) فالتعامل مع التذكيرات و timeout كما كان
