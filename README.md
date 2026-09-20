@@ -179,7 +179,18 @@ BROKER = "192.168.0.160"  # Match your Mosquitto IP
 ### 3. PC Vision Node Initialization
 Setup a virtual environment and launch the OpenCV tracking script on the host workstation.
 ```bash
+# Clone the repository and navigate to root
+git clone https://github.com/Hassan-Moqbel/driver-drowsiness-monitoring-system.git
+cd driver-drowsiness-monitoring-system
+
+# Establish isolated Python environment
+python -m venv venv
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+
+# Install essential computer vision and telemetry libraries
 pip install opencv-python mediapipe paho-mqtt
+
+# Launch the Vision Tracking Engine
 python pc_ai/driver_monitor.py
 ```
 *Ensure the Python script's MQTT broker IP matches the network.*
