@@ -167,7 +167,12 @@ sudo systemctl start mosquitto
 *Note the local IP address (e.g., `192.168.0.160`) to configure the nodes.*
 
 ### 2. Edge Actuation Firmware (MicroPython)
-Flash your ESP32 with the latest MicroPython firmware. Upload the `esp32_controller.py` script to the microcontroller via Thonny IDE or `ampy`. 
+Flash your ESP32 with the latest MicroPython firmware using `esptool.py`:
+```bash
+esptool.py --port COMx erase_flash
+esptool.py --port COMx --baud 460800 write_flash -z 0x1000 esp32-2023xxxx-v1.xx.bin
+```
+After flashing, upload the `esp32_controller.py` script to the microcontroller via Thonny IDE or `ampy`. 
 Update the credentials inside the script:
 ```python
 # esp32_controller.py
