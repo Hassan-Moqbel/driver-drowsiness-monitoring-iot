@@ -172,7 +172,10 @@ Flash your ESP32 with the latest MicroPython firmware using `esptool.py`:
 esptool.py --port COMx erase_flash
 esptool.py --port COMx --baud 460800 write_flash -z 0x1000 esp32-2023xxxx-v1.xx.bin
 ```
-After flashing, upload the `esp32_controller.py` script to the microcontroller via Thonny IDE or `ampy`. 
+After flashing, deploy the control script directly to the microcontroller using `ampy`. Naming it `main.py` ensures the actuation logic runs automatically upon boot:
+```bash
+ampy --port COMx put esp32/esp32_controller.py main.py
+``` 
 Update the credentials inside the script:
 ```python
 # esp32_controller.py
